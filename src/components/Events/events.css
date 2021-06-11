@@ -1,0 +1,23 @@
+.my-row
+{
+    background-color:rgb(235, 235, 235);
+    display: flex;
+    margin: auto;
+}
+
+.my-col
+{
+    text-align: center;
+    margin:auto;
+}
+
+
+
+
+
+@media screen and (max-width:576px) {
+    .btn-group {
+      display: flex;
+      flex-direction: column;
+    }
+  }

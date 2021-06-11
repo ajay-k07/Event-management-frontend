@@ -1,0 +1,4 @@
+li.list-group-item.active{
+    background-color: rgba(57, 61, 65, 0.952);
+    border-color: rgba(57, 61, 65, 0.952);
+}

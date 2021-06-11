@@ -1,0 +1,43 @@
+
+.form-control{
+    border-color: red;
+}
+
+button{
+    display:inline;
+}
+
+/*label{
+    font-size: x-large;
+}*/
+
+
+
+h3{
+    text-align: center;
+}
+
+label#profilepic {
+    margin-bottom: 20px;
+    border: 1px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 120px;
+}
+
+label#profilepic input {
+    display: none;
+}
+
+label#profilepic.has-profilepic {
+    border: 0;
+}
+
+label#profilepic.has-profilepic img {
+    display: none;
+}
+

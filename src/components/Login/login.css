@@ -1,0 +1,21 @@
+.my-container3{
+    box-sizing: border-box;
+    padding: 1px;
+    text-align: center;
+}
+
+.error{
+    color:red;
+    font-size: 20px;
+}
+.inputError{
+    border-color: red;
+}
+
+button{
+    display:inline;
+}
+
+label{
+    font-size: x-large;
+}
