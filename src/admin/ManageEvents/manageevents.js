@@ -41,7 +41,6 @@ const ManageEvents = (props) => {
     const deleteEvent = async (id) => {
         try {
             await api.delete("/manageregistrations/" + id)
-            await api.delete("/manageevents/" + id,)
             getEvents()
             setSuccessMessage("Event Deleted Sucessfully")
             setTimeout(() => {
