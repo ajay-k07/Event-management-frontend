@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const api = axios.create({
-    baseURL:'https://event-managementapi.herokuapp.com/'
+    baseURL:'https://event-managementapi.herokuapp.com'
 })
 
 api.interceptors.request.use(
