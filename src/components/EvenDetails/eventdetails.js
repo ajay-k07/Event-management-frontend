@@ -17,6 +17,11 @@ const EventDetails = (props) => {
     let user_id = user._id;
     const toggle = () => setModal(!modal);
 
+    const fullname = (firstname, lastname) => {
+        return firstname + " " + lastname;
+    };
+
+    let full = fullname(user.firstname, user.lastname)
     const closeBtn = (
         <button className="close" onClick={toggle}>
             &times;
@@ -96,6 +101,15 @@ const EventDetails = (props) => {
         }
     }
 
+    const downloadcertificate = async (name) => {
+        try {
+            const response = await api.post("/generatecertificate", name)
+            console.log(response.data)
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
 
     return (
         <div className="my-content">
@@ -135,6 +149,7 @@ const EventDetails = (props) => {
                                                     <p style={{ color: "#FF0000" }}>You can participate at the Event date or You participated already </p>
                                                     <Button color="danger" disabled>REGISTERED</Button>
                                                     <Button color="warning" className="event-button" disabled>PARTICIPATE</Button>
+                                                    <Button color="warning" className="event-button" onClick={() => { downloadcertificate(full) }}>Download Certificate</Button>
                                                 </>
                                             )
                                         ) : event.category === "Programming Competitions" ? (
@@ -146,12 +161,16 @@ const EventDetails = (props) => {
                                             ) : (
                                                 <>
                                                     <Button color="danger" disabled>REGISTERED</Button>
-                                                    <Button color="danger" className="event-button" disabled>PARTICIPATE</Button>
+                                                    <Button color="warning" className="event-button" disabled>PARTICIPATE</Button>
+                                                    <Button color="warning" className="event-button" onClick={() => { downloadcertificate(full) }}>Download Certificate</Button>
                                                 </>
                                             )
                                         ) :
                                             (
-                                                <Button color="danger" disabled>REGISTERED</Button>
+                                                <>
+                                                    <Button color="danger" disabled>REGISTERED</Button>
+                                                    <Button color="warning" className="event-button" onClick={() => { downloadcertificate(full) }}>Download Certificate</Button>
+                                                </>
                                             )
                                     ) :
                                     (event.price === 0 ?
