@@ -103,7 +103,14 @@ const EventDetails = (props) => {
 
     const downloadcertificate = async (name) => {
         try {
-            const response = await api.post("/generatecertificate", name)
+            const response = await api.post("/generatecertificate", name, {
+                responseType: 'blob'
+            })
+            const file = new Blob(
+                [response.data],
+                { type: 'application/pdf' });
+            const fileURL = URL.createObjectURL(file);
+            window.open(fileURL);
             console.log(response.data)
         } catch (error) {
             console.log(error)
