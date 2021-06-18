@@ -103,7 +103,8 @@ const EventDetails = (props) => {
 
     const downloadcertificate = async (name) => {
         try {
-            const response = await api.post("/generatecertificate", name, {
+            const response = await api.post("/generatecertificate", {
+                data: name,
                 responseType: 'blob'
             })
             const file = new Blob(
