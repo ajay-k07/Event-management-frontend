@@ -103,7 +103,7 @@ const EventDetails = (props) => {
 
     const downloadcertificate = async (name) => {
         try {
-            const response = await Api({
+            const response = await api({
                 url: '/generatecertificate',
                 method: 'POST',
                 responseType: 'blob',
