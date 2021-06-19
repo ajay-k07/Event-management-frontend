@@ -4,7 +4,7 @@ import moment from 'moment';
 import api from '../../services/api';
 import { toast } from 'react-toastify';
 import { isAuthenticated } from "../../Auth/auth";
-import { Button, Modal, ModalHeader } from 'reactstrap';
+import { Button, Modal, ModalHeader, ModalBody, ModalFooter, Label, Input, FormGroup, Form } from 'reactstrap';
 import './evendetails.css';
 
 const EventDetails = (props) => {
@@ -121,12 +121,13 @@ const EventDetails = (props) => {
         }
     }
 
-    const senddetails = async () => {
+    const handleFormSubmit = async ev => {
+        ev.preventDefault();
         try {
             const details = {
                 message: ev.target.message.value
             }
-            const response = await api.post("/sendmails/" + props.match.params.id ,details);
+            const response = await api.post("/sendmails/" + props.match.params.id, details);
             console.log(response.data);
             toggle();
             toast.dark(response.data.message)
@@ -169,15 +170,15 @@ const EventDetails = (props) => {
                                                 SEND DETAILS ABOUT EVENT
                                             </ModalHeader>
                                             <ModalBody>
-                                                <FormGroup>
-                                                    <Label for="message">message</Label>
-                                                    <Input type="text" name="message" id="message" placeholder="Enter Message" required />
-                                                </FormGroup>
+                                                <Form onSubmit={handleFormSubmit}>
+                                                    <FormGroup>
+                                                        <Label for="message">message</Label>
+                                                        <Input type="text" name="message" id="message" placeholder="Enter Message" required />
+                                                    </FormGroup>
+                                                    <Button color="primary">Submit</Button>{' '}
+                                                    <Button color="secondary" onClick={toggle}>CANCEL</Button>
+                                                </Form>
                                             </ModalBody>
-                                            <ModalFooter>
-                                                <Button color="primary" onClick={senddetails}>SEND</Button>{' '}
-                                                <Button color="secondary" onClick={toggle}>CANCEL</Button>
-                                            </ModalFooter>
                                         </Modal>
                                     </>
                                 ) : (
