@@ -170,7 +170,7 @@ const EventDetails = (props) => {
                                             </ModalHeader>
                                             <ModalBody>
                                                 <FormGroup>
-                                                    <Label for="exampleText">message</Label>
+                                                    <Label for="message">message</Label>
                                                     <Input type="text" name="message" id="message" placeholder="Enter Message" required />
                                                 </FormGroup>
                                             </ModalBody>
