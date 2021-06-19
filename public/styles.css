@@ -56,6 +56,10 @@ html,body
     background-color: transparent;
 }
 
+input[type="radio"] {
+    margin-top: -1px;
+    vertical-align: middle;
+}
 
 
 @media (max-width: 400px) {
