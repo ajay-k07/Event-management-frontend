@@ -175,8 +175,8 @@ const EventDetails = (props) => {
                                                         <Label for="message">message</Label>
                                                         <Input type="text" name="message" id="message" placeholder="Enter Message" required />
                                                     </FormGroup>
-                                                    <Button color="primary">Submit</Button>{' '}
-                                                    <Button color="secondary" onClick={toggle}>CANCEL</Button>
+                                                    <Button color="primary">SUBMIT</Button>{' '}
+                                                    <Button color="danger" onClick={toggle}>CANCEL</Button>
                                                 </Form>
                                             </ModalBody>
                                         </Modal>
