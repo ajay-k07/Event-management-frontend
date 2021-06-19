@@ -15,6 +15,7 @@ const EventDetails = (props) => {
     const [isAttended, setIsAttended] = useState(false);
     const user = isAuthenticated();
     let user_id = user._id;
+    let isAdmin = user.isAdmin;
     const toggle = () => setModal(!modal);
 
     const fullname = (firstname, lastname) => {
@@ -120,6 +121,20 @@ const EventDetails = (props) => {
         }
     }
 
+    const senddetails = async () => {
+        try {
+            const details = {
+                message: ev.target.message.value
+            }
+            const response = await api.post("/sendmails/" + props.match.params.id ,details);
+            console.log(response.data);
+            toggle();
+            toast.dark(response.data.message)
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
 
     return (
         <div className="my-content">
@@ -146,57 +161,77 @@ const EventDetails = (props) => {
                             <p><b>REGISTRATION ENDS ON:</b> {moment(event.registrationenddate).format('L')}</p>
                             <p style={{ color: "#FF0000" }}>NOTE : Once Registered, You cannot unregister .</p>
                             {
-                                isRegistered ?
-                                    (
-                                        event.category === "Technical Competitions" ? (
-                                            (moment(event.date).format('L') === moment(currentdate).format('L') && !isAttended) ? (
-                                                <>
-                                                    <Button color="danger" disabled>REGISTERED</Button>
-                                                    <Button color="warning" className="event-button" onClick={() => { acceptUser(user_id, event._id) }} >PARTICIPATE</Button>
-                                                </>
-                                            ) : (
-                                                <>
-                                                    <p style={{ color: "#FF0000" }}>You can participate at the Event date or You participated already </p>
-                                                    <Button color="danger" disabled>REGISTERED</Button>
-                                                    <Button color="warning" className="event-button" disabled>PARTICIPATE</Button>
-                                                    <Button color="warning" className="event-button" onClick={() => { downloadcertificate(full) }}>Download Certificate</Button>
-                                                </>
-                                            )
-                                        ) : event.category === "Programming Competitions" ? (
-                                            (moment(event.date).format('L') === moment(currentdate).format('L') && !isAttended) ? (
-                                                <>
-                                                    <Button color="danger" disabled>REGISTERED</Button>
-                                                    <Button color="warning" className="event-button" onClick={() => { props.history.push("/compiler") }} >PARTICIPATE</Button>
-                                                </>
-                                            ) : (
-                                                <>
-                                                    <Button color="danger" disabled>REGISTERED</Button>
-                                                    <Button color="warning" className="event-button" disabled>PARTICIPATE</Button>
-                                                    <Button color="warning" className="event-button" onClick={() => { downloadcertificate(full) }}>Download Certificate</Button>
-                                                </>
-                                            )
+                                isAdmin ? (
+                                    <>
+                                        <Button color="danger" onClick={toggle}>SEND DETAILS</Button>
+                                        <Modal isOpen={modal} toggle={toggle} >
+                                            <ModalHeader className=" border-0" cssModule={{ 'modal-title': 'w-100 text-center' }} toggle={toggle} close={closeBtn}>
+                                                SEND DETAILS ABOUT EVENT
+                                            </ModalHeader>
+                                            <ModalBody>
+                                                <FormGroup>
+                                                    <Label for="exampleText">message</Label>
+                                                    <Input type="text" name="message" id="message" placeholder="Enter Message" required />
+                                                </FormGroup>
+                                            </ModalBody>
+                                            <ModalFooter>
+                                                <Button color="primary" onClick={senddetails}>SEND</Button>{' '}
+                                                <Button color="secondary" onClick={toggle}>CANCEL</Button>
+                                            </ModalFooter>
+                                        </Modal>
+                                    </>
+                                ) : (
+                                    isRegistered ?
+                                        (
+                                            event.category === "Technical Competitions" ? (
+                                                (moment(event.date).format('L') === moment(currentdate).format('L') && !isAttended) ? (
+                                                    <>
+                                                        <Button color="danger" disabled>REGISTERED</Button>
+                                                        <Button color="warning" className="event-button" onClick={() => { acceptUser(user_id, event._id) }} >PARTICIPATE</Button>
+                                                    </>
+                                                ) : (
+                                                    <>
+                                                        <p style={{ color: "#FF0000" }}>You can participate at the Event date or You participated already </p>
+                                                        <Button color="danger" disabled>REGISTERED</Button>
+                                                        <Button color="warning" className="event-button" disabled>PARTICIPATE</Button>
+                                                        <Button color="warning" className="event-button" onClick={() => { downloadcertificate(full) }}>Download Certificate</Button>
+                                                    </>
+                                                )
+                                            ) : event.category === "Programming Competitions" ? (
+                                                (moment(event.date).format('L') === moment(currentdate).format('L') && !isAttended) ? (
+                                                    <>
+                                                        <Button color="danger" disabled>REGISTERED</Button>
+                                                        <Button color="warning" className="event-button" onClick={() => { props.history.push("/compiler") }} >PARTICIPATE</Button>
+                                                    </>
+                                                ) : (
+                                                    <>
+                                                        <Button color="danger" disabled>REGISTERED</Button>
+                                                        <Button color="warning" className="event-button" disabled>PARTICIPATE</Button>
+                                                        <Button color="warning" className="event-button" onClick={() => { downloadcertificate(full) }}>Download Certificate</Button>
+                                                    </>
+                                                )
+                                            ) :
+                                                (
+                                                    <>
+                                                        <Button color="danger" disabled>REGISTERED</Button>
+                                                        <Button color="warning" className="event-button" onClick={() => { downloadcertificate(full) }}>Download Certificate</Button>
+                                                    </>
+                                                )
                                         ) :
-                                            (
-                                                <>
-                                                    <Button color="danger" disabled>REGISTERED</Button>
-                                                    <Button color="warning" className="event-button" onClick={() => { downloadcertificate(full) }}>Download Certificate</Button>
-                                                </>
-                                            )
-                                    ) :
-                                    (event.price === 0 ?
-                                        (<Button color="danger" onClick={registerEvent}>REGISTER</Button>)
-                                        :
-                                        (<>
-                                            <Button color="danger" onClick={toggle}>REGISTER</Button>
-                                            <Modal isOpen={modal} toggle={toggle} >
-                                                <ModalHeader className=" border-0" cssModule={{ 'modal-title': 'w-100 text-center' }} toggle={toggle} close={closeBtn}>
-                                                    PAY FOR EVENT REGISTRATION
-                                                </ModalHeader>
-                                                <StripeContainer event={event} register={registerEvent} />
-                                            </Modal>
-                                        </>)
-                                    )
-
+                                        (event.price === 0 ?
+                                            (<Button color="danger" onClick={registerEvent}>REGISTER</Button>)
+                                            :
+                                            (<>
+                                                <Button color="danger" onClick={toggle}>REGISTER</Button>
+                                                <Modal isOpen={modal} toggle={toggle} >
+                                                    <ModalHeader className=" border-0" cssModule={{ 'modal-title': 'w-100 text-center' }} toggle={toggle} close={closeBtn}>
+                                                        PAY FOR EVENT REGISTRATION
+                                                    </ModalHeader>
+                                                    <StripeContainer event={event} register={registerEvent} />
+                                                </Modal>
+                                            </>)
+                                        )
+                                )
                             }
 
                         </div>
