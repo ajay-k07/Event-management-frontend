@@ -198,19 +198,6 @@ const EventDetails = (props) => {
                                                         <Button color="warning" className="event-button" onClick={() => { downloadcertificate(full) }}>Download Certificate</Button>
                                                     </>
                                                 )
-                                            ) : event.category === "Programming Competitions" ? (
-                                                (moment(event.date).format('L') === moment(currentdate).format('L') && !isAttended) ? (
-                                                    <>
-                                                        <Button color="danger" disabled>REGISTERED</Button>
-                                                        <Button color="warning" className="event-button" onClick={() => { props.history.push("/compiler") }} >PARTICIPATE</Button>
-                                                    </>
-                                                ) : (
-                                                    <>
-                                                        <Button color="danger" disabled>REGISTERED</Button>
-                                                        <Button color="warning" className="event-button" disabled>PARTICIPATE</Button>
-                                                        <Button color="warning" className="event-button" onClick={() => { downloadcertificate(full) }}>Download Certificate</Button>
-                                                    </>
-                                                )
                                             ) :
                                                 (
                                                     <>
