@@ -120,8 +120,8 @@ const MarkAttendance = (props) => {
 
 
     return (
-        <Container className="content my-content">
-            <h2 style={{ textAlign: "center" }}>MARK ATTENDANCE</h2>
+        <Container className="content my-content pt-3">
+            <h2 style={{ textAlign: "center",marginBottom: "15px" }}>MARK ATTENDANCE</h2>
             <Form onSubmit={submitHandler}>
                 <FormGroup>
                     <Input id="rollno" bsSize="md" type="text" value={rollno} placeholder={'Enter User RollNo'} onChange={(evt) => setRollno(evt.target.value)} required />
@@ -153,7 +153,7 @@ const MarkAttendance = (props) => {
             {errorMessage && <Message variant='danger'>{errorMessage}</Message>}
             <br />
             <div className="separator"><h4> EVENT PARTICIPATED USERS</h4></div>
-            <Button onClick={exportPDF} color="danger" className="float-right"><FaFileDownload/> Download Attended Students List</Button>
+            <Button onClick={exportPDF} color="danger" className="float-right mb-2"><FaFileDownload/> Download Attended Students List</Button>
             <br />
             <Table dark bordered responsive>
                 <thead>

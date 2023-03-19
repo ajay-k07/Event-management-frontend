@@ -157,7 +157,7 @@ const EventDetails = (props) => {
                         </div>
                     </div>
                     <div className="col-md-7">
-                        <img className="event-details-img" src={event.thumbnail} alt="projectimage" class="rounded" />
+                        <img className="event-details-img" src={event.thumbnail} alt="projectimage" />
                         <div className="project-info-box">
                             <p><b>REGISTRATION ENDS ON:</b> {moment(event.registrationenddate).format('L')}</p>
                             <p style={{ color: "#FF0000" }}>NOTE : Once Registered, You cannot unregister .</p>

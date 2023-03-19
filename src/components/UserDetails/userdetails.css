@@ -43,3 +43,8 @@
 .separator::after {
     margin-left: .25em;
 }
+
+.profile-pic{
+    width: 280px;
+    height: 280px;
+}

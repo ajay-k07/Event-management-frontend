@@ -21,31 +21,27 @@ const Login = (props) => {
     return (
         <div className="my-content">
             <div className="container my-container3">
-                <br /><br />
-                <h2>LOGIN</h2>
-                <br />
+                <h2 style={{marginBottom: "10px"}}>LOGIN</h2>
                 <form onSubmit={handleSubmit} noValidate>
-                    <div >
-                        <label htmlFor="email">Email Address</label>
+                    <div className='individual-div'>
+                        <label htmlFor="email" >Email Address</label>
                         <div >
-                            <input autoComplete="off" className={` ${errors.email && 'inputError'}`} type="email" name="email" onChange={handleChange} value={values.email || ''} required />
+                            <input autoComplete="off" className="form-control" type="email" name="email" onChange={handleChange} value={values.email || ''} required />
                             {errors.email && (
-                                <p className="error">{errors.email}</p>
+                                <p className="error fs-6">{errors.email}</p>
                             )}
                         </div>
                     </div>
-                    <br />
-                    <div>
+                    <div className='individual-div'>
                         <label htmlFor="password">Password</label>
                         <div >
-                            <input className={` ${errors.password && 'inputError'}`} type="password" name="password" onChange={handleChange} value={values.password || ''} required />
+                            <input className="form-control" type="password" name="password" onChange={handleChange} value={values.password || ''} required />
                         </div>
                         {errors.password && (
                             <p className="error">{errors.password}</p>
                         )}
                     </div>
-                    <br />
-                    <button className="btn-info" type="submit">Login</button>
+                    <button className="btn btn-info my-2" type="submit">Login</button>
                     <br />
                     <hr />
                     <h6>Forgot password ?<a href="/user/reset-password">Click Here</a></h6>

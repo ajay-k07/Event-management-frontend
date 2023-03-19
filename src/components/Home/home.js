@@ -31,16 +31,16 @@ function Content(props) {
       <div className="carousel-wrapper">
         <Carousel infiniteLoop showThumbs={false} dynamicHeight useKeyboardArrows autoPlay>
           <div>
-            <img src="/images/img-01.jpg" alt="ss1" />
+            <img src="/images/img-01.jpg" alt="ss1" className='images'/>
           </div>
           <div>
-            <img src="/images/img-02.jpg" alt="ss2" />
+            <img src="/images/img-02.jpg" alt="ss2" className='images'/>
           </div>
           <div>
-            <img src="/images/img-03.jpg" alt="ss3" />
+            <img src="/images/img-03.jpg" alt="ss3" className='images'/>
           </div>
           <div>
-            <img src="/images/img-04.jpeg" alt="ss4" />
+            <img src="/images/img-04.jpeg" alt="ss4" className='images'/>
           </div>
         </Carousel>
       </div>

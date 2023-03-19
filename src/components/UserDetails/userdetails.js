@@ -112,8 +112,8 @@ const UserDetails = (props) => {
                         {image.raw ?
                             (
                                 <div>
-                                    <button className="btn-info event-button" onClick={handleUpdate}>Update</button>
-                                    <button className="btn-danger event-button" onClick={handleCancel}>Cancel</button>
+                                    <button className="btn btn-info event-button" onClick={handleUpdate}>Update</button>
+                                    <button className="btn btn-danger event-button" onClick={handleCancel}>Cancel</button>
                                 </div>
                             ) : (
                                 <></>

@@ -1,21 +1,35 @@
-.my-container3{
+.my-container3 {
     box-sizing: border-box;
-    padding: 1px;
+    padding: 20px;
     text-align: center;
 }
 
-.error{
-    color:red;
-    font-size: 20px;
+.error {
+    color: red;
+    font-size: 16px;
+    margin-bottom: 5px;
 }
-.inputError{
+
+.inputError {
     border-color: red;
 }
 
-button{
-    display:inline;
+/* .form-control{
+    width: 30% !important;
+} */
+
+.individual-div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 10px 0px
 }
 
-label{
-    font-size: x-large;
+button {
+    display: inline;
+}
+
+label {
+    font-size: 18px;
 }

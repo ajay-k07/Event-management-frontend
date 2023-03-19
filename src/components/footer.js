@@ -66,25 +66,25 @@ function Footer(){
                         <h4>FOLLOW US</h4>
                         <ul className="list-unstyled">
                             <li>
-                                <a href="https://www.facebook.com/kumar.poshika/" type="button" className="btn-floating btn-large btn-fb">
+                                <a href="#" type="button" className="btn-floating btn-large btn-fb">
                                     <FaFacebook  size="2rem"/>
                                 </a>
                             </li>
                             <br/>
                             <li>
-                                <a href="https://twitter.com/appun_ram" type="button" className="btn-floating btn-tw">
+                                <a href="#" type="button" className="btn-floating btn-tw">
                                     <FaTwitter size="2rem"/>
                                 </a>
                             </li>
                             <br/>
                             <li>
-                                <a href="https://www.instagram.com/appun_ram/" type="button "  className="btn-floating btn-gplus">
+                                <a href="#" type="button "  className="btn-floating btn-gplus">
                                     <FaInstagramSquare  size="2rem"/>
                                 </a>
                             </li>
                             <br/>
                             <li>
-                                <a href="https://www.linkedin.com/in/ram-kumar-674704189/" type="button" className="btn-floating btn-large btn-li">
+                                <a href="#" type="button" className="btn-floating btn-large btn-li">
                                     <FaLinkedin  size="2rem"/>
                                 </a>
                             </li>

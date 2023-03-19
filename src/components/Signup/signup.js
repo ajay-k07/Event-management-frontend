@@ -19,8 +19,8 @@ const Signup = (props) => {
 
     return (
         <div className="my-content">
-            <form className="text-center border border-light p-5" onSubmit={handleSubmit} noValidate>
-                <h3>SIGN UP</h3>
+            <form className="text-center border border-light p-4" onSubmit={handleSubmit} noValidate>
+                <h3 style={{marginBottom: "20px"}}>SIGN UP</h3>
                 <div className="form-row mb-4">
                     <div className="col">
                         <input type="text" name="firstname" className="form-control " placeholder="First Name" value={values.firstname} onChange={handleChange} />
@@ -71,7 +71,7 @@ const Signup = (props) => {
                     <GoDeviceCamera />
                 </label>
                 <span className="text-danger">NOTE: Photo should be a passport size formal photo. This photo is further used for verification during participation of an event.</span>
-                <button className="btn btn-info my-4 btn-block" type="submit">Sign In</button>
+                <button className="btn btn-info my-4 btn-block" type="submit">Sign Up</button>
                 <h5>By Clicking <em>Sign Up</em>,You agree to our Terms and Services</h5>
                 <hr />
                 <h6>Or Already had a account <a href="/login">Click Here</a></h6>
